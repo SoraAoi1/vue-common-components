@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import './plugins/element.js'
-import './assets/reset.less'
+import './../theme/theme.less'
+// import './assets/reset.less'
 Vue.config.productionTip = false
 
 new Vue({
