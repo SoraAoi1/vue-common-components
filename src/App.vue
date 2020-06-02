@@ -1,26 +1,37 @@
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <div>
-      <p>
-        If Element is successfully added to this project, you'll see an
-        <code v-text="'<el-button>'"></code>
-        below
-      </p>
-      <el-button>el-button</el-button>
-    </div>
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <search-form :showSearchButton="showSearchButton" :inline="isInline" :formData="formData" :searchConfig="searchConfig"></search-form>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import searchForm from './components/searchForm/index.js'
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
+    searchForm
+  },
+  data() {
+    return {
+      formData: {},
+      isInline: true,
+      showSearchButton: true,
+      searchConfig: [
+        {type: 'input', label: '名字2222', props: 'name', labelWidth: '100px'},
+        {type: 'select', label: '下拉框', props: 'select', options: [
+          {defaultPropsLabel: 'label', defaultPropsValue: 'value', label: '1号', value: 1},
+          {defaultPropsLabel: 'label', defaultPropsValue: 'value', label: '2号', value: 2},
+        ]},
+        {type: 'radio', label: '单选框', options:[
+          { label: '1号', value: 1},
+          { label: '2号', value: 2},
+        ]},
+        {type: 'dateRange', label: '时间选择器'},
+        {type: 'dateTimeRange', label: '时间日期选择器'},
+      ]
+    }
+  },
 }
 </script>
 
